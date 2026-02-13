@@ -1,8 +1,6 @@
 # Alexandria Tools Chronicle
 
-<p align="center">
-  <img src="./assets/chronicle-cover.png" alt="Alexandria Chronicle Cover" width="100%" />
-</p>
+![Alexandria Chronicle Cover](./assets/chronicle-cover.png)
 
 <p align="center"><em>✦ Public process, private edge ✦</em></p>
 
