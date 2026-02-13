@@ -1,8 +1,14 @@
 # Alexandria Tools Chronicle
 
-![Alexandria Chronicle Cover](./assets/chronicle-cover.png)
+<p align="center">
+  <img src="./assets/chronicle-cover.png" alt="Alexandria Chronicle Cover" width="100%" />
+</p>
 
-Public build log of Alexandria Tools. Newspaper-style progress and validation updates.
+<p align="center"><em>✦ Public process, private edge ✦</em></p>
+
+---
+
+## 🕯️ Chronicle Edition
 
 - [Issue 01 — 2026-02-13](./issues/2026-02-13_issue-01.md)
 
@@ -10,5 +16,9 @@ Public build log of Alexandria Tools. Newspaper-style progress and validation up
 
 ## Public vs Private
 
-Public content includes roadmap milestones, implementation progress, and validation updates.  
-Core strategy logic remains private.
+**Public:** roadmap milestones, implementation progress, validation updates.  
+**Private:** core strategy logic, exact thresholds, proprietary execution details.
+
+---
+
+<p align="center">❦ Alexandria Tools Chronicle ❦</p>
