@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Generate Alexandria Chronicle cover SVG.
-Standard library only. Black-and-white newspaper/Victorian style.
+Standard library only. Victorian-modern sepia style.
 """
 
 import os
@@ -10,59 +10,75 @@ OUTPUT_PATH = "assets/chronicle-cover.svg"
 W = 1600
 H = 900
 
-# Font stack: serif-like fallback
-FONT_TITLE = "Georgia, 'Times New Roman', Times, serif"
-FONT_SUBTITLE = "Georgia, 'Times New Roman', Times, serif"
-FONT_RIBBON = "Georgia, 'Times New Roman', Times, serif"
-FONT_FOOTER = "Georgia, 'Times New Roman', Times, serif"
+# Sepia color palette
+BG = "#f4ecd8"           # Warm sepia paper
+INK = "#2b2118"          # Near-black brown (primary)
+LINE = "#4a3a2a"         # Dark sepia (secondary)
+
+# Typography: serif stack
+FONT = "Georgia, 'Times New Roman', serif"
 
 
 def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     repo_root = os.path.dirname(script_dir)
     output = os.path.join(repo_root, OUTPUT_PATH)
+    cx = W // 2
 
     os.makedirs(os.path.dirname(output), exist_ok=True)
 
     svg = f'''<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">
-  <!-- White background -->
-  <rect width="100%" height="100%" fill="#ffffff"/>
-  <!-- Outer black frame -->
-  <rect x="24" y="24" width="{W-48}" height="{H-48}" fill="none" stroke="#000000" stroke-width="4"/>
-  <!-- Thin inner border -->
-  <rect x="36" y="36" width="{W-72}" height="{H-72}" fill="none" stroke="#000000" stroke-width="1"/>
+  <!-- Warm sepia background -->
+  <rect width="100%" height="100%" fill="{BG}"/>
+  <!-- Outer frame (secondary line) -->
+  <rect x="28" y="28" width="{W-56}" height="{H-56}" fill="none" stroke="{LINE}" stroke-width="3"/>
+  <!-- Inner frame (primary ink) -->
+  <rect x="44" y="44" width="{W-88}" height="{H-88}" fill="none" stroke="{INK}" stroke-width="1"/>
 
-  <!-- Top decorative ornaments (geometric flourishes) -->
-  <g stroke="#000000" stroke-width="2" fill="none">
-    <!-- Left rule with ticks -->
-    <line x1="80" y1="90" x2="420" y2="90"/>
-    <line x1="120" y1="70" x2="120" y2="110"/>
-    <line x1="250" y1="70" x2="250" y2="110"/>
-    <line x1="380" y1="70" x2="380" y2="110"/>
-    <!-- Right rule (mirror) -->
-    <line x1="{W-80}" y1="90" x2="{W-420}" y2="90"/>
-    <line x1="{W-120}" y1="70" x2="{W-120}" y2="110"/>
-    <line x1="{W-250}" y1="70" x2="{W-250}" y2="110"/>
-    <line x1="{W-380}" y1="70" x2="{W-380}" y2="110"/>
-    <!-- Center flourish -->
-    <line x1="{W//2-80}" y1="90" x2="{W//2+80}" y2="90"/>
-    <line x1="{W//2}" y1="65" x2="{W//2}" y2="115"/>
-    <line x1="{W//2-25}" y1="90" x2="{W//2+25}" y2="90"/>
+  <!-- Victorian corner ornaments (symmetrical flourishes) -->
+  <g stroke="{INK}" stroke-width="1.5" fill="none">
+    <!-- Top-left -->
+    <path d="M 68 68 L 68 56 Q 68 48 76 48 L 68 48 M 68 58 L 78 48"/>
+    <!-- Top-right -->
+    <path d="M {W-68} 68 L {W-68} 56 Q {W-68} 48 {W-76} 48 L {W-68} 48 M {W-68} 58 L {W-78} 48"/>
+    <!-- Bottom-left -->
+    <path d="M 68 {H-68} L 68 {H-56} Q 68 {H-48} 76 {H-48} L 68 {H-48} M 68 {H-58} L 78 {H-48}"/>
+    <!-- Bottom-right -->
+    <path d="M {W-68} {H-68} L {W-68} {H-56} Q {W-68} {H-48} {W-76} {H-48} L {W-68} {H-48} M {W-68} {H-58} L {W-78} {H-48}"/>
+  </g>
+
+  <!-- Top decorative ornaments -->
+  <g stroke="{INK}" stroke-width="1.5" fill="none">
+    <line x1="140" y1="110" x2="500" y2="110"/>
+    <line x1="140" y1="110" x2="160" y2="92"/>
+    <line x1="260" y1="110" x2="260" y2="130"/>
+    <line x1="380" y1="110" x2="380" y2="130"/>
+    <line x1="500" y1="110" x2="480" y2="92"/>
+  </g>
+  <g stroke="{INK}" stroke-width="1.5" fill="none">
+    <line x1="{W-140}" y1="110" x2="{W-500}" y2="110"/>
+    <line x1="{W-140}" y1="110" x2="{W-160}" y2="92"/>
+    <line x1="{W-260}" y1="110" x2="{W-260}" y2="130"/>
+    <line x1="{W-380}" y1="110" x2="{W-380}" y2="130"/>
+    <line x1="{W-500}" y1="110" x2="{W-480}" y2="92"/>
+  </g>
+  <g stroke="{LINE}" stroke-width="1" fill="none">
+    <line x1="520" y1="130" x2="{W-520}" y2="130"/>
   </g>
 
   <!-- Title -->
-  <text x="{W//2}" y="280" text-anchor="middle" font-family="{FONT_TITLE}" font-size="72" font-weight="bold" fill="#000000">ALEXANDRIA TOOLS CHRONICLE</text>
+  <text x="{cx}" y="300" text-anchor="middle" font-family="{FONT}" font-size="68" font-weight="bold" letter-spacing="4" fill="{INK}">ALEXANDRIA TOOLS CHRONICLE</text>
 
   <!-- Subtitle -->
-  <text x="{W//2}" y="360" text-anchor="middle" font-family="{FONT_SUBTITLE}" font-size="32" font-style="italic" fill="#000000">Public Process • Private Edge</text>
+  <text x="{cx}" y="365" text-anchor="middle" font-family="{FONT}" font-size="28" font-style="italic" fill="{INK}">Public Process • Private Edge</text>
 
-  <!-- Section ribbon -->
-  <rect x="{W//2-120}" y="420" width="240" height="48" fill="none" stroke="#000000" stroke-width="2"/>
-  <text x="{W//2}" y="452" text-anchor="middle" font-family="{FONT_RIBBON}" font-size="24" font-weight="bold" fill="#000000">Issue 01</text>
+  <!-- Issue badge -->
+  <rect x="{cx-100}" y="410" width="200" height="44" fill="none" stroke="{INK}" stroke-width="2"/>
+  <text x="{cx}" y="440" text-anchor="middle" font-family="{FONT}" font-size="22" font-weight="bold" letter-spacing="3" fill="{INK}">Issue 01</text>
 
-  <!-- Bottom text -->
-  <text x="{W//2}" y="{H-80}" text-anchor="middle" font-family="{FONT_FOOTER}" font-size="20" fill="#000000">Newspaper-style Build Log</text>
+  <!-- Bottom caption (inside cover) -->
+  <text x="{cx}" y="{H-70}" text-anchor="middle" font-family="{FONT}" font-size="18" fill="{LINE}">Newspaper-style Build Log</text>
 </svg>
 '''
 
