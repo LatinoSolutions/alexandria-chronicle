@@ -1,5 +1,7 @@
 # Alexandria Tools Chronicle
 
+![Chronicle Cover](./assets/chronicle-cover.svg)
+
 <p align="center"><em>✦ Public process, private edge ✦</em></p>
 
 ---
