@@ -14,6 +14,27 @@
 
 ---
 
+## You Are Here
+
+**Current Phase:** Contract Review  
+**Progress:** 35%  
+**Status:** 🟡 In Progress  
+**Next Gate:** Contract Review signed-off → move to Contract Visualization
+
+### Roadmap Snapshot
+- [x] Project setup (Chronicle mock)
+- [ ] Contract Review
+- [ ] Contract Visualization
+- [ ] Contract Corrections
+- [ ] Human vs Logic Validator
+- [ ] MT5 Implementation
+- [ ] Data Gathering
+- [ ] Feedback Loop
+- [ ] Go Live
+- [ ] Post-Live Monitoring
+
+---
+
 ## Public vs Private
 
 **Public:** roadmap milestones, implementation progress, validation updates.  
